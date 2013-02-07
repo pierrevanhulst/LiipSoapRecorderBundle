@@ -21,7 +21,7 @@ class LiipSoapRecorderBundle extends Bundle
         if ($this->container->hasParameter('liip_soap_recorder_config')) {
             $config = $this->container->getParameter('liip_soap_recorder_config');
             if ($config['fetching_mode'] !== 'remote' || $config['record'] === true) {
-                RecordableSoapClient::setRecordFolders(
+                RecordableSoapClient::setRecordFoldersIfEmpty(
                     $config['request_folder'],
                     $config['response_folder'],
                     $config['wsdl_folder']

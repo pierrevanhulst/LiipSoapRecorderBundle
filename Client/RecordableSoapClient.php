@@ -118,6 +118,15 @@ class RecordableSoapClient extends \SoapClient
         self::$wsdlFolder = realpath($wsdlFolder);
     }
 
+    /**
+     * Only set the folders if they are not set yet
+     */
+    public static function setRecordFoldersIfEmpty($requestFolder, $responseFolder, $wsdlFolder)
+    {
+        if (static::$requestFolder === null){
+            static::setRecordFolders($requestFolder, $responseFolder, $wsdlFolder);
+        }
+    }
 
     /**
      * Select the mode that will be used for webservice response fetching
